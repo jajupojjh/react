@@ -59,8 +59,8 @@
   --mainfont-nanum: "nanumSquareNeo";
   --mainfont-nexon: "nexonLv1";
   --black: #000;
-  --black100: #000;
-  --black200: #000;
+  --black100: #111;
+  --black200: #222;
   --black300: #000;
   --black400: #000;
   --black500: #000;
@@ -131,6 +131,7 @@ select,
 table,
 textarea {
   font-family: var(--mainfont-nanum), var(--mainfont-nexon), "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", helvetica, sans-serif;
+  color: #fff;
 }
 
 a,
@@ -222,6 +223,7 @@ select {
   top: 0;
   width: 260px;
   height: 100%;
+  overflow-y: auto;
   z-index: 10000;
   background-color: #000;
 }
@@ -238,4 +240,147 @@ select {
   text-align: center;
   background-color: #333;
   padding: 20px 20px 20px 260px;
+}
+
+.header__logo {
+  border-bottom: 1px solid var(--black200);
+}
+.header__logo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+}
+.header__logo a em {
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-color: red;
+  margin-right: 10px;
+  -webkit-animation: ani 20s 20s ease-in-out infinite;
+          animation: ani 20s 20s ease-in-out infinite;
+}
+.header__logo a span {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.header__menu {
+  padding: 10px 0;
+}
+.header__menu .menu {
+  border-bottom: 1px solid var(--black100);
+}
+.header__menu .menu li {
+  margin-bottom: 5px;
+}
+.header__menu .menu li a {
+  font-size: 1rem;
+  display: block;
+  padding: 0.9rem 2rem 0.9rem 3.125rem;
+  margin: 0 0.625rem;
+  border-radius: 40px;
+  position: relative;
+  line-height: 1;
+  color: var(--white200);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.header__menu .menu li a svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  left: 1.25rem;
+  top: 0.75rem;
+}
+.header__menu .menu li a:hover {
+  background-color: var(--black200);
+  color: var(--white);
+}
+.header__menu .menu li.active a {
+  background-color: var(--black200);
+  color: var(--white);
+}
+.header__menu .keyword {
+  padding: 1.25rem;
+}
+.header__menu .keyword li {
+  display: inline-block;
+}
+.header__menu .keyword li a {
+  display: inline-block;
+  padding: 5px 15px;
+  border: 1px solid var(--black200);
+  font-size: 0.8rem;
+  border-radius: 40px;
+  margin: 3px 1px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.header__menu .keyword li a:hover {
+  background-color: var(--black100);
+  color: var(--white);
+}
+.header__menu .keyword li.active a {
+  background-color: var(--black100);
+  color: var(--white);
+}
+
+.header__sns {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 260px;
+  text-align: center;
+  padding: 15px 0 10px;
+  background-color: var(--blackAlpha100);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.header__sns li {
+  display: inline-block;
+}
+.header__sns li a {
+  padding: 5px 7px;
+  display: inline-block;
+}
+
+@-webkit-keyframes ani {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    border-radius: 0;
+  }
+  50% {
+    -webkit-transform: rotate(720deg) scale(0.5);
+            transform: rotate(720deg) scale(0.5);
+    border-radius: 20px;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    border-radius: 0;
+  }
+}
+
+@keyframes ani {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    border-radius: 0;
+  }
+  50% {
+    -webkit-transform: rotate(720deg) scale(0.5);
+            transform: rotate(720deg) scale(0.5);
+    border-radius: 20px;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    border-radius: 0;
+  }
 }

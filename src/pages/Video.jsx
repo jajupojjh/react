@@ -1,11 +1,12 @@
 ﻿import React from 'react';
+import Main from '../components/section/Main';
 
-const video = () => {
+const Video = () => {
     return (
-        <div>
-            video
-        </div>
+        <Main>
+            Video
+        </Main>
     );
 };
 
-export default video;
+export default Video;

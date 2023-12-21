@@ -59,17 +59,24 @@
   --mainfont-nanum: "nanumSquareNeo";
   --mainfont-nexon: "nexonLv1";
   --black: #000;
-  --black100: #111;
+  --black100: #161616;
   --black200: #222;
-  --black300: #000;
-  --black400: #000;
+  --black300: #333;
+  --black400: #444;
   --black500: #000;
+  --blackAlpha: #00000000;
+  --blackAlpha100: #00000025;
+  --blackAlpha200: #0000004d;
+  --blackAlpha300: #00000091;
+  --blackAlpha400: #000000c3;
+  --blackAlpha500: #000000eb;
   --white: #fff;
-  --white100: #fff;
-  --white200: #fff;
+  --white100: #efefef;
+  --white200: #d9d9d9;
   --white300: #fff;
   --white400: #fff;
   --white500: #fff;
+  --red: #f00;
   font-family: var(--mainfont-nanum), var(--mainfont-nexon);
   font-size: 16px;
   line-height: 1.5;
@@ -217,6 +224,63 @@ select {
   white-space: nowrap;
 }
 
+body {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+section {
+  padding: 40px;
+}
+@media (max-width: 800px) {
+  section {
+    padding: 20px;
+  }
+}
+section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.play__icon a {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  width: 100%;
+}
+.play__icon a::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: var(--blackAlpha200);
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.play__icon a:hover::before {
+  background-color: var(--blackAlpha);
+}
+.play__icon a::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  background: var(--blackAlpha400) url(../../img/icon/play.svg) no-repeat center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.play__icon a:hover::after {
+  opacity: 1;
+}
+
 #header {
   position: fixed;
   left: 0;
@@ -233,7 +297,6 @@ select {
   min-height: 100vh;
   margin: 0 auto;
   padding-left: 260px;
-  background-color: #111;
 }
 
 #footer {
@@ -247,8 +310,30 @@ select {
   font-size: 0.8rem;
 }
 
+@media (max-width: 800px) {
+  #header {
+    left: -260px;
+  }
+  #header h1 {
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  #main {
+    padding-left: 0;
+  }
+  #footer {
+    width: 100%;
+    margin-left: 0;
+  }
+}
 .header__logo {
-  border-bottom: 1px solid var(--black200);
+  border-bottom: 1px solid var(--black100);
+}
+@media (max-width: 800px) {
+  .header__logo {
+    border-bottom: 0;
+  }
 }
 .header__logo a {
   display: -webkit-box;
@@ -261,7 +346,7 @@ select {
   width: 40px;
   height: 40px;
   display: block;
-  background-color: red;
+  background-color: var(--red);
   margin-right: 10px;
   -webkit-animation: ani 20s 20s ease-in-out infinite;
           animation: ani 20s 20s ease-in-out infinite;
@@ -302,11 +387,11 @@ select {
   top: 0.75rem;
 }
 .header__menu .menu li a:hover {
-  background-color: var(--black200);
+  background-color: var(--black100);
   color: var(--white);
 }
 .header__menu .menu li.active a {
-  background-color: var(--black200);
+  background-color: var(--black100);
   color: var(--white);
 }
 .header__menu .keyword {
@@ -345,6 +430,11 @@ select {
   background-color: var(--blackAlpha100);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
+}
+@media (max-width: 800px) {
+  .header__sns {
+    display: none;
+  }
 }
 .header__sns li {
   display: inline-block;
@@ -399,6 +489,7 @@ select {
 .search__inner label {
   width: 24px;
   height: 24px;
+  background-image: url(../../img/icon/search.svg);
   position: absolute;
   left: 53px;
   top: 28px;
@@ -412,4 +503,118 @@ select {
   border-radius: 40px;
   font-size: 16px;
   color: var(--white);
+}
+
+@media (max-width: 800px) {
+  .search__inner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--blackAlpha400);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    padding: 17px 20px 17px 200px;
+  }
+  .search__inner label {
+    left: 213px;
+  }
+  .search__inner input {
+    padding: 14px 14px 14px 45px;
+  }
+}
+.today__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: var(--black100);
+  margin-bottom: 3.125rem;
+}
+
+.today__thumb {
+  width: 40%;
+}
+
+.today__text {
+  width: 60%;
+  padding: 2rem;
+}
+.today__text .today {
+  background-color: #f00;
+  padding: 2px 50px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.today__text .title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.today__text .desc {
+  margin-bottom: 1rem;
+  color: var(--white200);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.today__text .info .author {
+  font-size: 1rem;
+  margin-right: 10px;
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-transform: uppercase;
+}
+.today__text .info .date {
+  font-style: 0.8rem;
+  color: var(--white200);
+}
+
+@media (max-width: 1700px) {
+  .today__inner .today__thumb {
+    width: 500px;
+  }
+  .today__inner .today__text {
+    width: calc(100% - 500px);
+  }
+  .today__inner .today__text .desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+@media (max-width: 1200px) {
+  .today__inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .today__inner .today__thumb {
+    width: 100%;
+  }
+  .today__inner .today__text {
+    width: 100%;
+  }
+  .today__inner .today__text .title {
+    font-size: 24px;
+  }
+  .today__inner .today__text .desc {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  #todayPage,
+  #today {
+    margin-top: 80px;
+  }
 }
